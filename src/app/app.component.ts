@@ -12,10 +12,7 @@ export class AppComponent {
 
     isSidenavOpenedStore = false;
 
-    onMenuClick(event: Event) {
-        // eslint-disable-next-line no-console
-        console.log('Menu click', event);
-
+    onMenuClick() {
         this.isSidenavOpenedStore = !this.isSidenavOpenedStore;
     }
 }
