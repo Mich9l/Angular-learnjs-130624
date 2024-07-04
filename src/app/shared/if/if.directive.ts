@@ -13,7 +13,6 @@ export class IfDirective<T> {
         const isContainerHasView = this.viewContainerRef.length;
 
         if (value && !isContainerHasView) {
-            // Create view
             this.viewContainerRef.createEmbeddedView(this.temlpateRef, {
                 $implicit: value,
                 appIf: value,
@@ -23,14 +22,8 @@ export class IfDirective<T> {
         }
 
         if (!value && isContainerHasView) {
-            // Clear view
             this.viewContainerRef.clear();
         }
-
-        // ngFor
-        // ['data1', 'data2'].forEach(item => {
-        //     this.viewContainerRef.createEmbeddedView(this.temlpateRef, {$implicit: item})
-        // })
     }
 
     private readonly temlpateRef = inject<TemplateRef<IfDirectiveContext<T>>>(TemplateRef);

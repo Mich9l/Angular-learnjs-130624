@@ -3,11 +3,8 @@
     (menuClick)="sidenav.toggleSidenavOpened()"
 ></app-header>
 <app-sidenav #sidenav>
-    <!-- <ng-template #navigationTemplate let-default="$implicit" let-userName="name"> -->
     <div ngProjectAs="sidenav-content">
-        <!-- {{ default }} -->
         {{ applicationConfig.title }}
-        <!-- {{ userName }} -->
         <mat-list role="list">
             <mat-list-item appInsetShadow role="listitem">Item 1</mat-list-item>
             <mat-list-item appInsetShadow role="listitem">Item 2</mat-list-item>
@@ -15,7 +12,5 @@
         </mat-list>
     </div>
 
-    <div>Test</div>
     <app-products-list></app-products-list>
-    <!-- </ng-template> -->
 </app-sidenav>

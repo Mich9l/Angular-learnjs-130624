@@ -19,11 +19,6 @@ export class ProductsListComponent {
 
             this.changeDetectorRef.markForCheck();
         }, 3000);
-        // setTimeout(() => {
-        //     this.products = null;
-
-        //     this.changeDetectorRef.markForCheck();
-        // }, 5000);
     }
 
     onProductBuy(id: Product['_id']) {
