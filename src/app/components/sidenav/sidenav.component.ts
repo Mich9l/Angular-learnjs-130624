@@ -5,9 +5,6 @@ import {
     ContentChild,
     OnInit,
     TemplateRef,
-    // EventEmitter,
-    // Input,
-    // Output,
     ViewChild,
     ViewContainerRef,
     inject,
@@ -21,13 +18,8 @@ import {MatDrawer} from '@angular/material/sidenav';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SidenavComponent implements OnInit {
-    // @ViewChild('drawer')
-    // private readonly drawer: MatDrawer | undefined;
     @ViewChild(MatDrawer, {static: true})
     private readonly drawer: MatDrawer | undefined;
-
-    // @ViewChild(MatDrawer, {read: ElementRef, static: false})
-    // private readonly drawerElement: ElementRef | undefined;
 
     @ViewChild('viewport', {read: ViewContainerRef, static: true})
     private readonly viewport: ViewContainerRef | undefined;
@@ -49,24 +41,7 @@ export class SidenavComponent implements OnInit {
         }
     }
 
-    // @Input() set navigationTemplate(
-    //     template: TemplateRef<{name: string; test: string; $implicit: number}>,
-    // ) {
-    //     this.viewport?.clear();
-    //     this.viewport?.createEmbeddedView(template, {name: 'Egor', test: '123', $implicit: 123});
-    // }
-
-    // @ViewChild('div')
-    // private readonly divElement: ElementRef | undefined;
-
-    // @Input() isSidenavOpened = false;
-
-    // @Output() readonly isSidenavOpenedChange = new EventEmitter<boolean>();
-
     toggleSidenavOpened() {
-        // console.log(this.divElement);
-        // console.log(this.drawerElement);
-        // this.isSidenavOpenedChange.emit(!this.isSidenavOpened);
         this.drawer?.toggle();
         this.changeDetectorRef.markForCheck();
     }
