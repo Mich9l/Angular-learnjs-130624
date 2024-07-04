@@ -1,12 +1,10 @@
 <ng-template let-productsFromNgIf="ngIf" [ngIf]="products" [ngIfElse]="loader">
     <!-- Раскомментировать div при выполнении ДЗ -->
-    <!-- <div appScrollWithLoading class="scroll-container" (loadData)="onLoad($event)"> -->
-
-    <ng-template ngFor let-product [ngForOf]="productsFromNgIf">
-        <app-card class="card" [product]="product" (buy)="onProductBuy($event)"></app-card>
-    </ng-template>
-
-    <!-- </div> -->
+    <div appScrollWithLoading class="scroll-container" (loadData)="onLoad($event)">
+        <ng-template ngFor let-product [ngForOf]="productsFromNgIf">
+            <app-card class="card" [product]="product" (buy)="onProductBuy($event)"></app-card>
+        </ng-template>
+    </div>
 </ng-template>
 
 <ng-template #loader>
