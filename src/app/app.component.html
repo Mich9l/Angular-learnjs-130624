@@ -3,35 +3,19 @@
     (menuClick)="sidenav.toggleSidenavOpened()"
 ></app-header>
 <app-sidenav #sidenav>
-    <ng-template #navigationTemplate let-default="$implicit" let-userName="name">
-        {{ default }}
+    <!-- <ng-template #navigationTemplate let-default="$implicit" let-userName="name"> -->
+    <div ngProjectAs="sidenav-content">
+        <!-- {{ default }} -->
         {{ applicationConfig.title }}
-        {{ userName }}
+        <!-- {{ userName }} -->
         <mat-list role="list">
-            <mat-list-item role="listitem">Item 1</mat-list-item>
-            <mat-list-item role="listitem">Item 2</mat-list-item>
-            <mat-list-item role="listitem">Item 3</mat-list-item>
+            <mat-list-item appInsetShadow role="listitem">Item 1</mat-list-item>
+            <mat-list-item appInsetShadow role="listitem">Item 2</mat-list-item>
+            <mat-list-item appInsetShadow role="listitem">Item 3</mat-list-item>
         </mat-list>
-    </ng-template>
+    </div>
+
+    <div>Test</div>
+    <app-products-list></app-products-list>
+    <!-- </ng-template> -->
 </app-sidenav>
-
-<!-- Homework stand -->
-
-<!-- Switch template -->
-
-<app-popup-host [template]="switchTemplate ? first : second"></app-popup-host>
-
-<!-- or -->
-
-<!-- Close template -->
-
-<!-- <app-popup-host [template]="!closeTemplate ? first : null"></app-popup-host> -->
-
-<ng-template #first>
-    <h2>First</h2>
-    <p>Is first template</p>
-</ng-template>
-<ng-template #second>
-    <h2>Second</h2>
-    <p>Is second template</p>
-</ng-template>
