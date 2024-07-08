@@ -20,6 +20,12 @@ export class ProductsListComponent {
 
             this.changeDetectorRef.markForCheck();
         }, 3000);
+
+        setTimeout(() => {
+            this.products = productsMock.map(product => ({...product, feedbacksCount: 2}));
+
+            this.changeDetectorRef.markForCheck();
+        }, 6000);
     }
 
     onProductBuy(id: Product['_id']) {
@@ -30,5 +36,9 @@ export class ProductsListComponent {
     onLoad(direction: LoadDirection) {
         // eslint-disable-next-line no-console
         console.log(direction);
+    }
+
+    trackBy(_index: number, item: Product): Product['_id'] {
+        return item._id;
     }
 }
