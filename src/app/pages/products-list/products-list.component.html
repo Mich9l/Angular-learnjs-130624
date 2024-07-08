@@ -1,22 +1,12 @@
-<!-- <ng-template [appIf]="products" let-productsFromNgIf> -->
 <ng-template let-productsFromNgIf="ngIf" [ngIf]="products" [ngIfElse]="loader">
-    <ng-template ngFor let-product [ngForOf]="productsFromNgIf">
-        <app-card class="card" [product]="product" (buy)="onProductBuy($event)"></app-card>
-    </ng-template>
-
-    <!-- <app-card class="card" [product]="productsFromNgIf[0]" (buy)="onProductBuy($event)"></app-card>
-    <app-card class="card" [product]="productsFromNgIf[1]" (buy)="onProductBuy($event)"></app-card>
-    <app-card class="card" [product]="productsFromNgIf[2]" (buy)="onProductBuy($event)"></app-card>
-    <app-card class="card" [product]="productsFromNgIf[3]" (buy)="onProductBuy($event)"></app-card>
-    <app-card class="card" [product]="productsFromNgIf[4]" (buy)="onProductBuy($event)"></app-card> -->
+    <!-- Раскомментировать div при выполнении ДЗ -->
+    <div appScrollWithLoading class="scroll-container" (loadData)="onLoad($event)">
+        <ng-template ngFor let-product [ngForOf]="productsFromNgIf">
+            <app-card class="card" [product]="product" (buy)="onProductBuy($event)"></app-card>
+        </ng-template>
+    </div>
 </ng-template>
 
-<!-- <ng-template [ngIf]="!products"> -->
 <ng-template #loader>
     <mat-spinner></mat-spinner>
 </ng-template>
-<!-- <app-card class="card" [product]="products[0]" (buy)="onProductBuy($event)"></app-card>
-<app-card class="card" [product]="products[1]" (buy)="onProductBuy($event)"></app-card>
-<app-card class="card" [product]="products[2]" (buy)="onProductBuy($event)"></app-card>
-<app-card class="card" [product]="products[3]" (buy)="onProductBuy($event)"></app-card>
-<app-card class="card" [product]="products[4]" (buy)="onProductBuy($event)"></app-card> -->
