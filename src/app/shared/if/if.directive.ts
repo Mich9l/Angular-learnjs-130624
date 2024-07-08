@@ -43,31 +43,4 @@ export class IfDirective<T> {
     ): _inputValue is T {
         return true;
     }
-
-    // private test() {
-    //     // const directive = new IfDirective<number>();
-    //     // const context = {};
-
-    //     // if (IfDirective.ngTemplateContextGuard(directive, context)) {
-    //     //     console.log(context);
-
-    //     //     return;
-    //     // }
-
-    //     // console.log(context);
-
-    //     const value: number | string | object = 0;
-
-    //     if (isNumber(value)) {
-    //         console.log(value);
-
-    //         return;
-    //     }
-
-    //     console.log(value);
-    // }
 }
-
-// function isNumber(value: number | string | object): value is number {
-//     return typeof value === 'number';
-// }

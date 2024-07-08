@@ -72,8 +72,6 @@ export class CarouselDirective<T> implements OnChanges, OnInit {
             $implicit: appCarouselOf[currentIndex],
             appCarouselOf,
             index: currentIndex,
-            // next: this.next.bind(this),
-            // back: this.back.bind(this),
             next: () => {
                 this.next();
             },
