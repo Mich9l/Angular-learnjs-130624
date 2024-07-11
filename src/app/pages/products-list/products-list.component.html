@@ -1,19 +1,29 @@
-<!-- <ng-template let-productsFromNgIf="ngIf" [ngIf]="products"> -->
-<!-- <ng-template let-productsFromNgIf="appIf" [appIf]="products"> -->
-<!-- <ng-template let-productsFromNgIf="ngIf" [ngIf]="products" [ngIfElse]="loader"> -->
-<!-- <div *ngIf="products; else: loader; let productsFromNgIf = ngIf" class="scroll-container"> -->
-<!-- <div *ngIf="products; else: loader; ngIf as productsFromNgIf" class="scroll-container"> -->
 <div *ngIf="products as productsFromNgIf; else loader" class="scroll-container">
-    <!-- <ng-template ngFor let-product [ngForOf]="productsFromNgIf" [ngForTrackBy]="trackBy"> -->
+    <!-- Раскомментрировать для ДЗ -->
+    <!-- <ng-container
+        *appPagination="
+            let productsGroup of products;
+            chunkSize: 4;
+            let pageIndexes = pageIndexes;
+            let activeIndex = index;
+            let next = next;
+            let back = back;
+            let selectIndex = selectIndex
+        "
+    > -->
+
     <app-card
         *ngFor="let product of productsFromNgIf; trackBy: trackBy"
         class="card"
         [product]="product"
         (buy)="onProductBuy($event)"
     ></app-card>
-    <!-- </ng-template> -->
+    <div class="pagination">
+        <!-- Add pagination control -->
+    </div>
+
+    <!-- </ng-container> -->
 </div>
-<!-- </ng-template> -->
 
 <ng-template #loader>
     <mat-spinner></mat-spinner>
