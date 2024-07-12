@@ -1,4 +1,4 @@
-import {NgModule, inject} from '@angular/core';
+import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -26,37 +26,7 @@ import {ProductsApiService} from './shared/products/products-api.service';
         PopupHostModule,
         InsetShadowModule,
     ],
-    providers: [
-        // {
-        //     provide: ProductsStoreService,
-        //     useClass: ProductsStoreService,
-        // },
-        ProductsStoreService,
-        ProductsApiService,
-        {
-            provide: 'ProductsStoreService',
-            // useExisting: ProductsStoreService,
-            useClass: ProductsStoreService,
-        },
-        {
-            provide: 'useFactory',
-            // useFactory: () => inject(ProductsStoreService),
-            useFactory: () => new ProductsStoreService(),
-        },
-        {
-            provide: 'products$',
-            useFactory: () => {
-                // eslint-disable-next-line no-console
-                console.log('Create products$ in DI');
-
-                return inject(ProductsStoreService).products$;
-            },
-        },
-        {
-            provide: 'test',
-            useValue: 'Test value',
-        },
-    ],
+    providers: [ProductsStoreService, ProductsApiService],
     bootstrap: [AppComponent],
 })
 export class AppModule {}

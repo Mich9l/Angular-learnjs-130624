@@ -8,14 +8,7 @@ import {CarouselModule} from '../../../shared/carousel/carousel.module';
 
 @NgModule({
     declarations: [CardComponent],
-    imports: [
-        CommonModule,
-        MatCardModule,
-        MatButtonModule,
-        MatIconModule,
-        CarouselModule,
-        // CurrencyModule,
-    ],
+    imports: [CommonModule, MatCardModule, MatButtonModule, MatIconModule, CarouselModule],
     exports: [CardComponent],
 })
 export class CardModule {}
