@@ -1,4 +1,4 @@
-<div *ngIf="products as productsFromNgIf; else loader" class="scroll-container">
+<div *ngIf="products$ | async as products; else loader" class="scroll-container">
     <!-- Раскомментрировать для ДЗ -->
     <!-- <ng-container
         *appPagination="
@@ -13,7 +13,7 @@
     > -->
 
     <app-card
-        *ngFor="let product of productsFromNgIf; trackBy: trackBy"
+        *ngFor="let product of products; trackBy: trackBy"
         class="card"
         [product]="product"
         (buy)="onProductBuy($event)"

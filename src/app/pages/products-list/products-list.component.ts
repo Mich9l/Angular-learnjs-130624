@@ -1,7 +1,6 @@
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component, inject} from '@angular/core';
-import {productsMock} from '../../shared/products/products.mock';
+import {ChangeDetectionStrategy, Component, ProviderToken, inject} from '@angular/core';
 import {Product} from '../../shared/products/product.interface';
-import {LoadDirection} from '../../shared/scroll-with-loading/enum/load-direction';
+import {ProductsStoreService} from '../../shared/products/products-store.service';
 
 @Component({
     selector: 'app-products-list',
@@ -10,32 +9,37 @@ import {LoadDirection} from '../../shared/scroll-with-loading/enum/load-directio
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductsListComponent {
-    private readonly changeDetectorRef = inject(ChangeDetectorRef);
+    // private readonly changeDetectorRef = inject(ChangeDetectorRef);
+    // private readonly productsStoreService = new ProductsStoreService(ApiService(HttpService), HttpService);
+    private readonly productsStoreService = inject(ProductsStoreService);
+    // private readonly productsStoreService = inject('dasfds');
+    // private readonly productsStoreService = inject(1231231231);
 
-    products: Product[] | null = null;
+    readonly products$ = this.productsStoreService.products$;
+    // readonly products$ = inject<Observable<Product[] | null>>(
+    //     'products$' as unknown as ProviderToken<any>,
+    // );
+
+    // products: Product[] | null = null;
 
     constructor() {
-        setTimeout(() => {
-            this.products = productsMock;
+        this.productsStoreService.loadProducts();
 
-            this.changeDetectorRef.markForCheck();
-        }, 3000);
+        const pseudo = inject('ProductsStoreService' as unknown as ProviderToken<unknown>);
 
-        setTimeout(() => {
-            this.products = productsMock.map(product => ({...product, feedbacksCount: 2}));
+        // eslint-disable-next-line no-console
+        console.log(this.productsStoreService === pseudo);
 
-            this.changeDetectorRef.markForCheck();
-        }, 6000);
+        // this.productsStoreService.products$.subscribe(() => {
+        //     this.products = productsMock;
+
+        //     this.changeDetectorRef.markForCheck();
+        // });
     }
 
     onProductBuy(id: Product['_id']) {
         // eslint-disable-next-line no-console
         console.log(id);
-    }
-
-    onLoad(direction: LoadDirection) {
-        // eslint-disable-next-line no-console
-        console.log(direction);
     }
 
     trackBy(_index: number, item: Product): Product['_id'] {

@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import {NgModule, inject} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -10,6 +10,8 @@ import {ProductsListModule} from './pages/products-list/products-list.module';
 import {SidenavModule} from './components/sidenav/sidenav.module';
 import {PopupHostModule} from './components/popup-host/popup-host.module';
 import {InsetShadowModule} from './shared/inset-shadow/inset-shadow.module';
+import {ProductsStoreService} from './shared/products/products-store.service';
+import {ProductsApiService} from './shared/products/products-api.service';
 
 @NgModule({
     declarations: [AppComponent],
@@ -23,6 +25,37 @@ import {InsetShadowModule} from './shared/inset-shadow/inset-shadow.module';
         MatListModule,
         PopupHostModule,
         InsetShadowModule,
+    ],
+    providers: [
+        // {
+        //     provide: ProductsStoreService,
+        //     useClass: ProductsStoreService,
+        // },
+        ProductsStoreService,
+        ProductsApiService,
+        {
+            provide: 'ProductsStoreService',
+            // useExisting: ProductsStoreService,
+            useClass: ProductsStoreService,
+        },
+        {
+            provide: 'useFactory',
+            // useFactory: () => inject(ProductsStoreService),
+            useFactory: () => new ProductsStoreService(),
+        },
+        {
+            provide: 'products$',
+            useFactory: () => {
+                // eslint-disable-next-line no-console
+                console.log('Create products$ in DI');
+
+                return inject(ProductsStoreService).products$;
+            },
+        },
+        {
+            provide: 'test',
+            useValue: 'Test value',
+        },
     ],
     bootstrap: [AppComponent],
 })
