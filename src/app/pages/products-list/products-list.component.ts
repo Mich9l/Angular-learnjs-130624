@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, ProviderToken, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {Product} from '../../shared/products/product.interface';
 import {ProductsStoreService} from '../../shared/products/products-store.service';
 
@@ -9,32 +9,19 @@ import {ProductsStoreService} from '../../shared/products/products-store.service
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductsListComponent {
-    // private readonly changeDetectorRef = inject(ChangeDetectorRef);
-    // private readonly productsStoreService = new ProductsStoreService(ApiService(HttpService), HttpService);
     private readonly productsStoreService = inject(ProductsStoreService);
-    // private readonly productsStoreService = inject('dasfds');
-    // private readonly productsStoreService = inject(1231231231);
 
     readonly products$ = this.productsStoreService.products$;
-    // readonly products$ = inject<Observable<Product[] | null>>(
-    //     'products$' as unknown as ProviderToken<any>,
-    // );
 
-    // products: Product[] | null = null;
+    // For easy
+    name = 'Мышь';
+
+    // For hard
+    readonly propertyName = 'feedbacksCount' as const; // keyof Product
+    searchPropertyValue = 5;
 
     constructor() {
         this.productsStoreService.loadProducts();
-
-        const pseudo = inject('ProductsStoreService' as unknown as ProviderToken<unknown>);
-
-        // eslint-disable-next-line no-console
-        console.log(this.productsStoreService === pseudo);
-
-        // this.productsStoreService.products$.subscribe(() => {
-        //     this.products = productsMock;
-
-        //     this.changeDetectorRef.markForCheck();
-        // });
     }
 
     onProductBuy(id: Product['_id']) {

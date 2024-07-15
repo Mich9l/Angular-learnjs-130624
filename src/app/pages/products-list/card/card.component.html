@@ -1,21 +1,9 @@
 <mat-card class="card">
     <mat-card-header>
         <mat-card-title>{{ product?.name }}</mat-card-title>
-        <!-- <mat-card-subtitle>{{ product?.price }} $</mat-card-subtitle> -->
-        <!-- <mat-card-subtitle>{{ currency(product?.price) }}</mat-card-subtitle> -->
         <mat-card-subtitle>
             {{ product?.price | currency: 'EUR' : 'symbol-narrow' : '1.0-0' }}
         </mat-card-subtitle>
-        <!--product?.price | currency : 'R'
-                |
-                V
-            CurrencyPipde.transform(product?.price, 'R')-->
-
-        <!-- <mat-card-subtitle>{{ (product?.price | toNumber) | currency : '$' }}</mat-card-subtitle> -->
-        <!--product?.price | toNumber | currency : '$'
-                |
-                V
-            CurrencyPipe.transform(ToNumberPipe.transform(product?.price), '$')-->
     </mat-card-header>
     <div
         *appCarousel="let img of product?.images; let next = next; let back = back"
