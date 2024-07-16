@@ -13,13 +13,10 @@ export class ProductsListComponent {
 
     readonly products$ = this.productsStoreService.products$;
 
-    // For easy
-    name = 'Мышь';
-
-    // For hard
-    readonly propertyName = 'feedbacksCount' as const; // keyof Product
-    searchPropertyValue = 5;
-
+    // constructor(
+    //     // @Inject(ProductsStoreService) private readonly productsStoreService: ProductsStoreService,
+    //     private readonly productsStoreService: ProductsStoreService,
+    // ) {
     constructor() {
         this.productsStoreService.loadProducts();
     }

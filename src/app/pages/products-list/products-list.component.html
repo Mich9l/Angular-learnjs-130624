@@ -1,17 +1,7 @@
-<!-- Easy вариант -->
-<!-- <div *ngIf="((products$ | async) | productsFilter: name) as products; else loader" class="scroll-container"> -->
-
-<!-- Hard вариант -->
 <div
-    *ngIf="
-        products$ | async | filterByProperty: propertyName : searchPropertyValue as products;
-        else loader
-    "
+    *ngIf="products$ | async | filterByProperty: 'name' : '' as products; else loader"
     class="scroll-container"
 >
-
-<!-- Закомментировать при выполнении ДЗ -->
-<!-- <div *ngIf="products$ | async as products; else loader" class="scroll-container"> -->
     <ng-container
         *appPagination="
             let productsGroup of products;
