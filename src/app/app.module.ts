@@ -11,9 +11,6 @@ import {ProductsListModule} from './pages/products-list/products-list.module';
 import {SidenavModule} from './components/sidenav/sidenav.module';
 import {PopupHostModule} from './components/popup-host/popup-host.module';
 import {InsetShadowModule} from './shared/inset-shadow/inset-shadow.module';
-// import {ProductsStoreService} from './shared/products/products-store.service';
-// import {ProductsApiService} from './shared/products/products-api.service';
-// import {BASE_URL_TOKEN, baseUrl} from './shared/base-url/base-url';
 import {BaseUrlInterceptor} from './shared/base-url/base-url.interceptor';
 
 @NgModule({
@@ -31,28 +28,11 @@ import {BaseUrlInterceptor} from './shared/base-url/base-url.interceptor';
         HttpClientModule,
     ],
     providers: [
-        // ProductsStoreService,
-        // {
-        //     provide: ProductsStoreService,
-        //     useClass: ProductsStoreService,
-        // },
-        // ProductsApiService,
-        // {provide: BASE_URL_TOKEN, useValue: baseUrl},
-        // {
-        //     provide: HTTP_INTERCEPTORS,
-        //     useClass: AuthInterceptor,
-        //     multi: true,
-        // },
         {
             provide: HTTP_INTERCEPTORS,
             useClass: BaseUrlInterceptor,
             multi: true,
         },
-        // {
-        //     provide: HTTP_INTERCEPTORS,
-        //     useClass: ErrorInterceptor,
-        //     multi: true,
-        // },
     ],
     bootstrap: [AppComponent],
 })

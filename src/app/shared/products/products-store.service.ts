@@ -18,8 +18,6 @@ export class ProductsStoreService {
     readonly products$ = this.productsStore$.asObservable();
     readonly currentProduct$ = this.currentProductStore$.asObservable();
 
-    // constructor(private readonly productsApiService: ProductsApiService) {}
-
     loadProducts() {
         if (this.activeLoadProductsSubscription) {
             this.activeLoadProductsSubscription.unsubscribe();
