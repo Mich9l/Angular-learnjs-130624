@@ -13,10 +13,6 @@ export class ProductsListComponent {
 
     readonly products$ = this.productsStoreService.products$;
 
-    // constructor(
-    //     // @Inject(ProductsStoreService) private readonly productsStoreService: ProductsStoreService,
-    //     private readonly productsStoreService: ProductsStoreService,
-    // ) {
     constructor() {
         this.productsStoreService.loadProducts();
     }
