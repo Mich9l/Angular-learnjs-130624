@@ -7,4 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
     title = 'Angular-learnjs-130624';
+    public number:number = 123;
 }
