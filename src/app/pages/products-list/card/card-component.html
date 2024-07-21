@@ -1,0 +1,28 @@
+<mat-card class="card">
+    <mat-card-header>
+        <mat-card-title>{{ product.name }}</mat-card-title>
+        <mat-card-subtitle>{{ product.price }}</mat-card-subtitle>
+    </mat-card-header>
+    <div class="galereya">
+        <button mat-icon-button disabled>
+            <mat-icon>{{left}}</mat-icon>
+        </button>
+        <img mat-card-image alt="Product photo" [src]="product.images[0].url" />
+        <button mat-icon-button disabled>
+            <mat-icon>{{right}}</mat-icon>
+        </button>
+    </div>
+    <mat-card-content>
+        <h2>{{feedback}} {{ product.feedbacksCount }}</h2>
+        <div class="raiting">
+            <mat-icon [class.star-active]="Active(1)">{{star}}</mat-icon>
+            <mat-icon [class.star-active]="Active(2)">{{star}}</mat-icon>
+            <mat-icon [class.star-active]="Active(3)">{{star}}</mat-icon>
+            <mat-icon [class.star-active]="Active(4)">{{star}}</mat-icon>
+            <mat-icon [class.star-active]="Active(5)">{{star}}</mat-icon>
+        </div>
+    </mat-card-content>
+    <mat-card-actions class="mat-card-actions-align-end">
+        <button class="btn" mat-button (click)="BuyProd($event)">{{buy}}</button>
+    </mat-card-actions>
+</mat-card>
